@@ -1,0 +1,172 @@
+// Link design tokens, shared by the Link component and the generic <a>
+// fallback, so a token change only has to happen here. Resolved from the BDS
+// Link spec (https://github.com/samiamdesigns/pd-xrpl-developer-docs/blob/main/components/link.json).
+// Requires _colors.scss and _helpers.scss (bds-theme-mode) to be imported first.
+
+// True black -- "neutral" is #000000 exactly or $true-black, not $black (#141414).
+$link-neutral-black: $true-black;
+
+// Focus ring colors by context.
+$link-focus-on-theme-light: $off-black;
+$link-focus-on-theme-dark: $white;
+$link-focus-on-inverse-light: $white;
+$link-focus-on-inverse-dark: $true-black;
+$link-focus-on-saturated-light: $off-black;
+$link-focus-on-saturated-dark: $true-black;
+
+// Label + icon color for rest/hover/visited, light and dark, per color group.
+// hover and pressed (:active) share a value in every group -- not an omission.
+@mixin xrpl-link-colors($group: brand) {
+  @if $group == brand {
+    color: $xrpl-green-11;
+    --link-icon-color: #{$xrpl-green-11};
+    @include bds-theme-mode(dark) {
+      color: $xrpl-green-dark-11;
+      --link-icon-color: #{$xrpl-green-dark-11};
+    }
+
+    &:hover,
+    &:active {
+      color: $xrpl-green-12;
+      --link-icon-color: #{$xrpl-green-12};
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-dark-12;
+        --link-icon-color: #{$xrpl-green-dark-12};
+      }
+    }
+
+    &:visited {
+      color: $sage-12;
+      --link-icon-color: #{$sage-12};
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-12;
+        --link-icon-color: #{$sage-dark-12};
+      }
+    }
+  } @else if $group == neutral {
+    color: $link-neutral-black;
+    --link-icon-color: #{$link-neutral-black};
+    @include bds-theme-mode(dark) {
+      color: $white;
+      --link-icon-color: #{$white};
+    }
+
+    &:hover,
+    &:active {
+      color: $link-neutral-black;
+      --link-icon-color: #{$link-neutral-black};
+      @include bds-theme-mode(dark) {
+        color: $white;
+        --link-icon-color: #{$white};
+      }
+    }
+
+    // No distinct visited color, per design direction -- matches rest, not
+    // the spec's sage-11.
+    &:visited {
+      color: $link-neutral-black;
+      --link-icon-color: #{$link-neutral-black};
+      @include bds-theme-mode(dark) {
+        color: $white;
+        --link-icon-color: #{$white};
+      }
+    }
+  } @else if $group == brand-on-inverse {
+    color: $xrpl-green-dark-11;
+    --link-icon-color: #{$xrpl-green-dark-11};
+    @include bds-theme-mode(dark) {
+      color: $xrpl-green-11;
+      --link-icon-color: #{$xrpl-green-11};
+    }
+
+    &:hover,
+    &:active {
+      color: $xrpl-green-dark-12;
+      --link-icon-color: #{$xrpl-green-dark-12};
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-12;
+        --link-icon-color: #{$xrpl-green-12};
+      }
+    }
+
+    &:visited {
+      color: $xrpl-green-1;
+      --link-icon-color: #{$xrpl-green-1};
+      @include bds-theme-mode(dark) {
+        color: $xrpl-green-dark-1;
+        --link-icon-color: #{$xrpl-green-dark-1};
+      }
+    }
+  } @else if $group == neutral-on-inverse {
+    color: $sage-1;
+    --link-icon-color: #{$sage-1};
+    @include bds-theme-mode(dark) {
+      color: $sage-dark-12;
+      --link-icon-color: #{$sage-dark-12};
+    }
+
+    &:hover,
+    &:active {
+      color: $sage-1;
+      --link-icon-color: #{$sage-1};
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-12;
+        --link-icon-color: #{$sage-dark-12};
+      }
+    }
+
+    &:visited {
+      color: $sage-7;
+      --link-icon-color: #{$sage-7};
+      @include bds-theme-mode(dark) {
+        color: $sage-dark-7;
+        --link-icon-color: #{$sage-dark-7};
+      }
+    }
+  } @else if $group == brand-on-saturated {
+    // Mode-invariant: the saturated surface is the same green in both modes.
+    color: $black;
+    --link-icon-color: #{$black};
+
+    &:hover,
+    &:active,
+    &:visited {
+      color: $xrpl-green-12;
+      --link-icon-color: #{$xrpl-green-12};
+    }
+  } @else {
+    @error "Unknown xrpl-link-colors group: #{$group}";
+  }
+}
+
+// Persistent underline, every state -- required by WCAG 1.4.1 since color
+// alone (dark-mode brand green) doesn't separate a link from body text.
+@mixin xrpl-link-underline {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+// :focus-visible outline, colored by which surface the link sits on.
+@mixin xrpl-link-focus($context: on-theme) {
+  $light-color: $link-focus-on-theme-light;
+  $dark-color: $link-focus-on-theme-dark;
+
+  @if $context == on-inverse {
+    $light-color: $link-focus-on-inverse-light;
+    $dark-color: $link-focus-on-inverse-dark;
+  } @else if $context == on-saturated {
+    $light-color: $link-focus-on-saturated-light;
+    $dark-color: $link-focus-on-saturated-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $light-color;
+    outline-offset: 2px;
+  }
+
+  @include bds-theme-mode(dark) {
+    &:focus-visible {
+      outline-color: $dark-color;
+    }
+  }
+}
