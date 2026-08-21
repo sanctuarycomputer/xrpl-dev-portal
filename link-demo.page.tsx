@@ -6,6 +6,8 @@ export const frontmatter = {
   seo: {
     title: "Link component reference | XRPL.org",
   },
+  // Internal reference page, not real site content -- keep it out of sitemap.xml.
+  excludeFromSearch: true,
 };
 
 type Group = {
