@@ -1056,7 +1056,9 @@
     width: 100%;
     transform: translateY(0%);
 
-    p a {
+    // :not(.xrpl-link) so the Link component's own brand/on-theme styling
+    // isn't overridden by this rule.
+    p a:not(.xrpl-link) {
       text-decoration: none;
       font-weight: 600;
       color: $link-hover-color;

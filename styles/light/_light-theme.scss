@@ -435,8 +435,10 @@ aside .card {
     }
   }
 
-  p a:not(.bds-link),
-  .longform a:not(.bds-link) {
+  // :not(.xrpl-link) so the Link component's own brand/on-theme styling
+  // isn't overridden by this rule (see also styles/_landings.scss).
+  p a:not(.bds-link):not(.xrpl-link),
+  .longform a:not(.bds-link):not(.xrpl-link) {
     color: $light-link-hover-color;
   }
 }

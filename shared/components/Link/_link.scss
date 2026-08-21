@@ -106,35 +106,44 @@
     }
   }
 
-  &--brand {
+  // `&.xrpl-link--x` (not `&--x`) compiles to the compound selector
+  // `.xrpl-link.xrpl-link--x`, not just `.xrpl-link--x` -- the repeated class
+  // buys an extra specificity tier. Needed here: @redocly/theme's own
+  // Markdown wrapper (a hashed class, e.g. .eMIPih) ships
+  // `.eMIPih a:not([role="button"]):hover/:focus/:visited { color: ...; }`
+  // rules that otherwise tie our un-boosted selector's specificity, and on a
+  // tie the later-loaded stylesheet wins -- which in practice is theirs, so
+  // links inside actual markdown content (rendered via the MarkdownLink
+  // override) would flash their default purple on hover/focus/visited.
+  &.xrpl-link--brand {
     @include xrpl-link-colors(brand);
   }
 
-  &--neutral {
+  &.xrpl-link--neutral {
     @include xrpl-link-colors(neutral);
   }
 
-  &--brand-on-inverse {
+  &.xrpl-link--brand-on-inverse {
     @include xrpl-link-colors(brand-on-inverse);
   }
 
-  &--neutral-on-inverse {
+  &.xrpl-link--neutral-on-inverse {
     @include xrpl-link-colors(neutral-on-inverse);
   }
 
-  &--brand-on-saturated {
+  &.xrpl-link--brand-on-saturated {
     @include xrpl-link-colors(brand-on-saturated);
   }
 
-  &--ctx-on-theme {
+  &.xrpl-link--ctx-on-theme {
     @include xrpl-link-focus(on-theme);
   }
 
-  &--ctx-on-inverse {
+  &.xrpl-link--ctx-on-inverse {
     @include xrpl-link-focus(on-inverse);
   }
 
-  &--ctx-on-saturated {
+  &.xrpl-link--ctx-on-saturated {
     @include xrpl-link-focus(on-saturated);
   }
 }
