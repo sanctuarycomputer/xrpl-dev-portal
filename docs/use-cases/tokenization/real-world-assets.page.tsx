@@ -274,15 +274,15 @@ const marketIntegrationData = [
     description: (
       <>
         Utilize XRP Ledger's native{" "}
-        <XrplLink href="/docs/concepts/tokens/decentralized-exchange" intention="neutral">
+        <XrplLink href="/docs/concepts/tokens/decentralized-exchange" intention="brand">
           decentralized exchange (DEX)
         </XrplLink>{" "}
         with integrated{" "}
-        <XrplLink href="/docs/concepts/tokens/decentralized-exchange/automated-market-makers" intention="neutral">
+        <XrplLink href="/docs/concepts/tokens/decentralized-exchange/automated-market-makers" intention="brand">
           Automated Market Makers (AMM)
         </XrplLink>{" "}
         and onchain 24/7 order books, providing a developer-friendly environment
-        to create <XrplLink href="/docs/use-cases/defi" intention="neutral">DeFi solutions</XrplLink> for
+        to create <XrplLink href="/docs/use-cases/defi" intention="brand">DeFi solutions</XrplLink> for
         traditional finance applications.
       </>
     ),
@@ -292,7 +292,7 @@ const marketIntegrationData = [
     description: (
       <>
         Issuers can enable{" "}
-        <XrplLink target="_blank" href="/docs/concepts/payment-types/escrow" intention="neutral">
+        <XrplLink target="_blank" href="/docs/concepts/payment-types/escrow" intention="brand">
           escrow functionality
         </XrplLink>{" "}
         to lock tokens and facilitate secure, conditional transfers of assets

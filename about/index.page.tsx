@@ -119,13 +119,16 @@ export default function XrplOverview() {
                 <Link className="btn btn-primary btn-arrow" to="/docs">
                   {translate("Read Technical Docs")}
                 </Link>{" "}
-                <a
-                  className="ms-4 video-external-link"
+                <XrplLink
+                  className="ms-4"
+                  intention="brand"
+                  variation="standalone"
+                  iconEnd
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
                   {translate("Watch Explainer Videos")}
-                </a>
+                </XrplLink>
               </div>
             </div>
             <div className="col">
@@ -154,13 +157,16 @@ export default function XrplOverview() {
                 <Link className="btn btn-primary btn-arrow mt-5 mb-4" to="/docs">
                   {translate("Read Technical Docs")}
                 </Link>{" "}
-                <a
-                  className="ms-4 video-external-link"
+                <XrplLink
+                  className="ms-4"
+                  intention="brand"
+                  variation="standalone"
+                  iconEnd
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
                   {translate("Watch Explainer Videos")}
-                </a>
+                </XrplLink>
               </div>
             </div>
           </div>

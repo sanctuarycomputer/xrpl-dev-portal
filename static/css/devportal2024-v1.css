@@ -28223,17 +28223,17 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   line-height: 24px;
   color: #E6EAF0;
 }
-.page-rwa-tokenization .token-utility-section .utility-card .utility-description a,
-.use-case-payments .token-utility-section .utility-card .utility-description a {
+.page-rwa-tokenization .token-utility-section .utility-card .utility-description a:not(.xrpl-link),
+.use-case-payments .token-utility-section .utility-card .utility-description a:not(.xrpl-link) {
   color: #7649E3;
   text-decoration: none;
 }
-.page-rwa-tokenization .token-utility-section .utility-card .utility-description a:hover,
-.use-case-payments .token-utility-section .utility-card .utility-description a:hover {
+.page-rwa-tokenization .token-utility-section .utility-card .utility-description a:not(.xrpl-link):hover,
+.use-case-payments .token-utility-section .utility-card .utility-description a:not(.xrpl-link):hover {
   text-decoration: underline;
 }
-:root.dark .page-rwa-tokenization .token-utility-section .utility-card .utility-description a,
-:root.dark .use-case-payments .token-utility-section .utility-card .utility-description a {
+:root.dark .page-rwa-tokenization .token-utility-section .utility-card .utility-description a:not(.xrpl-link),
+:root.dark .use-case-payments .token-utility-section .utility-card .utility-description a:not(.xrpl-link) {
   color: #C0A7FF;
 }
 
@@ -29491,33 +29491,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.video-external-link {
-  color: #7649E3;
-  font-weight: 600;
-}
-.video-external-link::after {
-  content: " ";
-  background-image: url(../img/icons/arrow-up-right.svg);
-  background-repeat: no-repeat;
-  display: inline-block;
-  background-size: 24px;
-  padding: 9px 4px 0 8px;
-  width: 2rem;
-  background-position: left 8px bottom 0px;
-  transition: background-position 100ms ease-in-out;
-}
-.video-external-link.video-external-link:hover::after {
-  background-position: left 12px bottom 8px;
-}
-
-:root.light .video-external-link {
-  color: #7649E3;
-}
-
-:root.dark .video-external-link {
-  color: #C0A7FF;
 }
 
 .video-title {
